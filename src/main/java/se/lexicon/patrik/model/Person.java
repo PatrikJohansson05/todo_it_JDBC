@@ -6,16 +6,14 @@ public class Person {
     private String lastName;
 
     public Person(int personId, String firstName, String lastName) {
+        this.personId = personId;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.personId = personId;
     }
 
-
-
-
-
-
+    public Person() {
+        personId = getPersonId();
+    }
 
     /*
     Getters and setters start
