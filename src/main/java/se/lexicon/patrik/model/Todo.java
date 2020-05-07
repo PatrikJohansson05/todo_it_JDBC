@@ -11,6 +11,9 @@ public class Todo {
         this.description = description;
     }
 
+    public Todo(){
+        todoId = getTodoId();
+    }
 
     /*
     Getters and Setters
