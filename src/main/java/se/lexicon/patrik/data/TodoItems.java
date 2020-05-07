@@ -1,5 +1,6 @@
 package se.lexicon.patrik.data;
 
+import se.lexicon.patrik.model.Person;
 import se.lexicon.patrik.model.Todo;
 
 import java.util.Arrays;
@@ -36,6 +37,46 @@ public class TodoItems {
     }
     public void clear(){
         todoArray = new Todo[0];
+    }
+    public Todo[] findByDoneStatus(boolean doneStatus){
+        Todo[] result = new Todo[0];
+        for (int i = 0; i < todoArray.length; i++){
+            if (doneStatus == todoArray[i].isDone()){
+                result = todoArray;
+                break;
+            }
+        }
+        return result;
+    }
+    public Todo[] findByAssignee(int personId){
+        Todo[] result = new Todo[0];
+        for (int i = 0; i < todoArray.length; i++){
+            if (personId == todoArray[i].getAssignee().getPersonId()){
+                result = todoArray;
+                break;
+            }
+        }
+        return result;
+    }
+    public Todo[] findByAssignee(Person assignee){
+        Todo[] result = new Todo[0];
+        for (int i = 0; i < todoArray.length; i++){
+            if (assignee == todoArray[i].getAssignee()){
+                result = todoArray;
+                break;
+            }
+        }
+        return result;
+    }
+    public Todo[] findUnassignedTodoItems(){
+        Todo[] result = new Todo[0];
+        for (int i = 0; i < todoArray.length; i++){
+            if (todoArray[i].getAssignee() == null){
+                result = todoArray;
+                break;
+            }
+        }
+        return result;
     }
 
 }
