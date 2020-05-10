@@ -59,6 +59,11 @@ public class TodoItemsTest {
         testObject.findById(1).setAssignee(people.findById(1));
         assertEquals(2, testObject.findUnassignedTodoItems().length);
     }
+    @Test
+    public void test_removeTodo(){
+        testObject.removeTodo("Test");
+        assertEquals(2, testObject.size() );
+    }
     @After
     public void tearDown(){
         testObject.clear();

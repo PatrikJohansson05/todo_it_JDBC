@@ -12,24 +12,24 @@ import static org.junit.Assert.assertEquals;
 
 public class PeopleTest {
     private Person testPerson;
-    private int personId;
     private People testObject;
 
     @Before
     public void setUp() {
         testObject = new People();
         testPerson = testObject.newPerson("Test", "Testsson"); //also tests newPerson method
-        personId = testPerson.getPersonId();
+        testObject.newPerson("Test2", "Testsson2");
+        testObject.newPerson("Test3", "Testsson3");
     }
 
     @Test
-    public void test_size_length_is_1(){
-        assertEquals(1,testObject.size());
+    public void test_size_length_is_3(){
+        assertEquals(3,testObject.size());
     }
 
     @Test
     public void test_findAll(){
-        assertEquals(1,testObject.findAll().length);
+        assertEquals(3,testObject.findAll().length);
     }
 
     @Test
@@ -37,6 +37,11 @@ public class PeopleTest {
         assertEquals("Test", testObject.findById(1).getFirstName());
     }
 
+    @Test
+    public void test_removePerson(){
+        testObject.removePeople("Test", "Testsson");
+        assertEquals(2, testObject.size() );
+    }
 
     @After
     public void tearDown(){
